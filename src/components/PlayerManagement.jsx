@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PlayerList from './PlayerList';
 import PlayerForm from './PlayerForm';
 import { api } from '../services/api';
+import { ordenarPorPosicion } from '../utils/ordenarJugadores';
 import './PlayerManagement.css';
 
 const PlayerManagement = ({ onBack }) => {
@@ -21,7 +22,7 @@ const PlayerManagement = ({ onBack }) => {
     setLoading(true);
     try {
       const data = await api.getPlayers();
-      setPlayers(data);
+      setPlayers(ordenarPorPosicion(data));
     } catch (err) {
       setError('Error al cargar jugadores');
     } finally {

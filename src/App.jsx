@@ -8,6 +8,7 @@ import MatchSummary from './components/MatchSummary';
 import ReportSection from './components/ReportSection';
 import PlayerManagement from './components/PlayerManagement';
 import { api } from './services/api';
+import { ordenarPorPosicion } from './utils/ordenarJugadores';
 import './App.css';
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
     setLoading(true);
     try {
       const data = await api.getPlayers();
-      setPlayers(data);
+      setPlayers(ordenarPorPosicion(data));
     } catch (err) {
       console.error(err);
     } finally {
