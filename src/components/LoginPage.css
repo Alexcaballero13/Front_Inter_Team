@@ -1,0 +1,84 @@
+.login-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  background-color: var(--color-bg);
+}
+
+.login-box {
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-light);
+  border-radius: 12px;
+  padding: 2.5rem 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.login-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--color-surface-light);
+  padding-bottom: 1rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--color-gold);
+  letter-spacing: 1px;
+}
+
+.input-group input {
+  background: var(--color-surface-light);
+  border: 1px solid transparent;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  color: white;
+  font-family: var(--font-main);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input-group input:focus {
+  border-color: var(--color-neon-green);
+  background: rgba(247, 181, 205, 0.05);
+}
+
+.error-message {
+  color: var(--color-jamaica-red);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  text-align: center;
+  background: rgba(227, 0, 15, 0.1);
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.jamaica-stripes-mini {
+  display: flex;
+  height: 4px;
+  margin-top: 2rem;
+  border-radius: 2px;
+  overflow: hidden;
+  opacity: 0.5;
+}
+
+.jamaica-stripes-mini .stripe {
+  flex: 1;
+}
+
+.jamaica-stripes-mini .green { background: #F7B5CD; }
+.jamaica-stripes-mini .yellow { background: #231F20; }
+.jamaica-stripes-mini .red { background: #F7B5CD; }

@@ -1,0 +1,221 @@
+.teams-match-view {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
+}
+
+.match-header-actions {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: rgba(0,0,0,0.4);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+}
+
+.btn-back-mini {
+  background: transparent;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  position: absolute;
+  left: 1.5rem;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.btn-back-mini:hover {
+  background: var(--color-gold);
+  color: black;
+}
+
+.versus-banner {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--color-gold);
+}
+
+.pitch-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-y: auto;
+  padding-bottom: 8rem; /* More space for double buttons */
+}
+
+/* Hide scrollbar */
+.pitch-layout::-webkit-scrollbar { display: none; }
+.pitch-layout { -ms-overflow-style: none; scrollbar-width: none; }
+
+.vs-separator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
+  position: relative;
+  z-index: 10;
+}
+
+.vs-circle {
+  width: 44px;
+  height: 44px;
+  background: var(--color-bg);
+  border: 2px solid var(--color-neon-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-neon-green);
+}
+
+.team-container {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-local {
+  background: linear-gradient(to bottom, rgba(247, 181, 205, 0.03), transparent);
+}
+
+.team-away {
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.04));
+  border-top: 1px dashed rgba(255,255,255,0.05);
+}
+
+.team-header {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.team-name {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.team-local .team-name { color: var(--color-neon-green); }
+.team-away .team-name { color: #ffffff; }
+
+.team-stats {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+}
+
+.team-stat-chip {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-left: 6px;
+}
+
+.team-stat-chip--atk {
+  color: var(--color-jamaica-red);
+}
+
+.team-stat-chip--def {
+  color: var(--color-neon-green);
+  margin-left: 8px;
+}
+
+.team-roster {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.roster-item {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.02);
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.03);
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.roster-avatar {
+  font-size: 1.25rem;
+  margin-right: 0.75rem;
+}
+
+.roster-pos {
+  font-size: 0.65rem;
+  font-weight: 800;
+  width: 40px;
+  text-align: center;
+  margin-right: 1rem;
+}
+
+.roster-name {
+  flex: 1;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.roster-ovr {
+  margin-left: auto;
+  opacity: 0.9;
+}
+
+.footer-match-actions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.25rem;
+  background: linear-gradient(to top, var(--color-bg) 80%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 20;
+}
+
+.btn-confirm {
+  background: var(--color-neon-green);
+  color: #231F20;
+  font-weight: 800;
+  padding: 1rem;
+  box-shadow: 0 4px 15px rgba(247, 181, 205, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--color-gold);
+  color: var(--color-gold);
+  font-weight: 700;
+  padding: 0.8rem;
+}
+
+.registration-success {
+  background: rgba(247, 181, 205, 0.1);
+  color: var(--color-neon-green);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}

@@ -1,0 +1,55 @@
+.forma-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+}
+
+.forma-indicator__icon {
+  font-size: 0.65rem;
+  line-height: 1;
+}
+
+.forma-indicator--up .forma-indicator__icon {
+  color: var(--color-trend-up);
+}
+
+.forma-indicator--down .forma-indicator__icon {
+  color: var(--color-jamaica-red);
+}
+
+.forma-indicator__bar {
+  display: inline-block;
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-surface-light);
+  overflow: hidden;
+}
+
+.forma-indicator__bar-fill {
+  display: block;
+  height: 100%;
+}
+
+.forma-indicator--up .forma-indicator__bar-fill {
+  background: var(--color-trend-up);
+}
+
+.forma-indicator--down .forma-indicator__bar-fill {
+  background: var(--color-jamaica-red);
+}
+
+.forma-indicator--up .forma-indicator__label {
+  color: var(--color-trend-up);
+}
+
+.forma-indicator--down .forma-indicator__label {
+  color: var(--color-jamaica-red);
+}
+
+.forma-indicator--compact .forma-indicator__label {
+  display: none;
+}

@@ -1,0 +1,655 @@
+/* ─────────────────────────────────────────
+   Contenedor principal + Tabs
+───────────────────────────────────────── */
+.reports-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.report-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--color-surface-light);
+  margin-bottom: 1.5rem;
+}
+
+.report-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  padding: 0.85rem 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.report-tab:hover {
+  color: var(--color-text-main);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.report-tab--active {
+  color: var(--color-gold);
+  border-bottom: 2px solid var(--color-gold);
+}
+
+/* ─────────────────────────────────────────
+   Toggle Asistentes / Ausentes
+───────────────────────────────────────── */
+.mode-toggle {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--color-surface);
+  border-radius: 8px;
+  padding: 0.35rem;
+  border: 1px solid var(--color-surface-light);
+}
+
+.toggle-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  padding: 0.65rem 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.toggle-btn.active {
+  background: rgba(247, 181, 205, 0.15);
+  color: var(--color-neon-green);
+  box-shadow: 0 0 10px rgba(247, 181, 205, 0.1);
+}
+
+.toggle-btn--absent.active--absent {
+  background: rgba(227, 0, 15, 0.12);
+  color: var(--color-jamaica-red);
+  box-shadow: 0 0 10px rgba(227, 0, 15, 0.1);
+}
+
+/* ─────────────────────────────────────────
+   Lista de Ausentes
+───────────────────────────────────────── */
+.absent-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-surface-light);
+}
+
+.absent-count {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-jamaica-red);
+  text-shadow: 0 0 12px rgba(227, 0, 15, 0.35);
+  line-height: 1;
+}
+
+.absent-label {
+  font-size: 0.7rem;
+  font-family: var(--font-display);
+  letter-spacing: 1px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.absent-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.absent-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 0.75rem;
+  background: rgba(227, 0, 15, 0.05);
+  border: 1px solid rgba(227, 0, 15, 0.12);
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.absent-item:hover {
+  background: rgba(227, 0, 15, 0.08);
+}
+
+.absent-icon {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.absent-name {
+  flex: 1;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.absent-badge {
+  font-size: 0.65rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.5px;
+  color: var(--color-jamaica-red);
+  background: rgba(227, 0, 15, 0.12);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  opacity: 0.8;
+}
+
+.no-data--success {
+  color: var(--color-neon-green);
+  opacity: 1 !important;
+}
+
+/* ─────────────────────────────────────────
+   Rendimiento (manual vs. efectivo + win-rate)
+   Tarjetas en vez de tabla: con 5 datos por jugador en un contenedor de
+   ~480px, una tabla de columnas fijas siempre termina compitiendo por
+   espacio. Con flexbox + wrap los chips bajan de línea solos, nunca se
+   pisan ni producen scroll horizontal.
+───────────────────────────────────────── */
+.rendimiento-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  padding: 0 0.1rem 0.75rem 0.1rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-surface-light);
+}
+
+.rendimiento-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.68rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.5px;
+  color: var(--color-gold);
+}
+
+.rendimiento-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.rendimiento-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-light);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+}
+
+.rendimiento-card-nombre {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.rendimiento-card-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.rendimiento-chip {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  min-width: 0;
+}
+
+.rendimiento-chip-label {
+  font-size: 0.6rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.rendimiento-chip-valor {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--color-neon-green);
+  white-space: nowrap;
+}
+
+.rendimiento-chip-valor--up {
+  color: var(--color-trend-up);
+}
+
+.rendimiento-chip-valor--down {
+  color: var(--color-jamaica-red);
+}
+
+/* Ayuda ("?") por columna */
+.rendimiento-ayuda-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1px solid var(--color-text-muted);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.55rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.rendimiento-ayuda-btn:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* Banner de ayuda: ancho completo y en flujo normal (no flotante), para que
+   nunca pueda desbordar el ancho disponible sin importar qué columna sea. */
+.rendimiento-ayuda-banner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  background: var(--color-surface-light);
+  border: 1px solid var(--color-gold);
+  border-radius: 6px;
+  padding: 0.7rem 2rem 0.7rem 0.75rem;
+  margin-bottom: 0.75rem;
+  white-space: normal;
+}
+
+.rendimiento-ayuda-banner strong {
+  color: var(--color-gold);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+}
+
+.rendimiento-ayuda-banner span {
+  color: var(--color-text-main);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.rendimiento-ayuda-cerrar {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.6rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.rendimiento-ayuda-cerrar:hover {
+  color: var(--color-text-main);
+}
+
+/* ─────────────────────────────────────────
+   Historial de Partidos
+───────────────────────────────────────── */
+.historial-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.historial-load-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.historial-count {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.historial-num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--color-gold);
+  text-shadow: 0 0 12px var(--color-gold-dim);
+  line-height: 1;
+}
+
+.historial-label {
+  font-size: 0.7rem;
+  font-family: var(--font-display);
+  letter-spacing: 1px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.historial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.historial-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-light);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.historial-card:hover {
+  border-color: rgba(247, 181, 205, 0.25);
+}
+
+.historial-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.historial-date-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.historial-date {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  text-transform: capitalize;
+}
+
+.historial-time {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-display);
+  letter-spacing: 1px;
+}
+
+.historial-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.historial-players-count {
+  font-size: 0.7rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.5px;
+  color: var(--color-gold);
+  background: var(--color-gold-dim);
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+}
+
+.historial-chevron {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  transition: transform 0.2s;
+}
+
+.historial-card-body {
+  padding: 0 1rem 1rem 1rem;
+  border-top: 1px solid var(--color-surface-light);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.historial-marcador-chip {
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: 0.5px;
+  color: var(--color-neon-green);
+  background: var(--color-neon-green-dim);
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+}
+
+.historial-marcador-chip--pendiente {
+  color: var(--color-jamaica-yellow);
+  background: rgba(247, 181, 205, 0.12);
+}
+
+.historial-marcador-final {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.9rem 0;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.historial-marcador-vs {
+  color: var(--color-text-muted);
+}
+
+.historial-marcador-equipo {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.historial-marcador-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0.75rem 0;
+}
+
+.historial-marcador-form .report-input {
+  flex: 1 1 100px;
+  min-width: 100px;
+}
+
+.historial-marcador-guardar {
+  flex: 1 1 100%;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 0.8rem;
+}
+
+.historial-equipos {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.historial-equipo-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.historial-equipo-titulo {
+  font-size: 0.65rem;
+  font-family: var(--font-display);
+  letter-spacing: 1px;
+  color: var(--color-text-muted);
+}
+
+.historial-players-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.75rem 0;
+}
+
+.historial-player-chip {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  color: var(--color-text-main);
+}
+
+.historial-player-chip--editable {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding-right: 0.4rem;
+}
+
+.historial-player-chip-quitar {
+  background: transparent;
+  border: none;
+  color: var(--color-jamaica-red);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Editor de roster: dos cajas con la misma altura (align-items: stretch),
+   para que no se vean escalonadas cuando un equipo tiene más jugadores que
+   el otro. El control de "agregar" queda pegado siempre abajo de cada caja
+   (margin-top: auto), así los dos quedan a la misma altura entre sí. */
+.historial-roster-editor {
+  display: flex;
+  align-items: stretch;
+  gap: 0.6rem;
+  margin: 0.25rem 0 0.75rem 0;
+}
+
+.historial-roster-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-surface-light);
+  border-radius: 8px;
+  padding: 0.65rem;
+}
+
+.historial-roster-grid {
+  flex: 1;
+  align-content: flex-start;
+  padding: 0.5rem 0;
+  min-height: 2.2rem;
+}
+
+.historial-roster-vacio {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.historial-roster-agregar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.historial-roster-agregar select {
+  width: 100%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-gold);
+  color: var(--color-text-main);
+  border-radius: 6px;
+  padding: 0.55rem 0.5rem;
+  font-size: 0.72rem;
+}
+
+.historial-roster-agregar-btn {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.68rem;
+}
+
+.historial-roster-acciones {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.historial-roster-acciones .btn,
+.historial-roster-acciones .btn-secondary {
+  flex: 1;
+  min-width: 0;
+  padding: 0.65rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+.btn-editar-roster {
+  margin-top: 0.5rem;
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--color-gold);
+  border-radius: 6px;
+  padding: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--color-gold);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.btn-editar-roster:hover {
+  background: var(--color-gold-dim);
+}
+
+.btn-delete-match {
+  margin-top: 0.5rem;
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(227, 0, 15, 0.4);
+  border-radius: 6px;
+  padding: 0.65rem;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--color-jamaica-red);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.btn-delete-match:hover:not(:disabled) {
+  background: rgba(227, 0, 15, 0.1);
+  border-color: var(--color-jamaica-red);
+}
+
+.btn-delete-match:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

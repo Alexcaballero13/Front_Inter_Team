@@ -1,0 +1,95 @@
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at center, var(--color-surface) 0%, var(--color-bg) 100%);
+}
+
+.landing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.logo-container {
+  margin-bottom: 1.5rem;
+  animation: float 6s ease-in-out infinite;
+}
+
+.team-logo {
+  width: 200px;
+  height: auto;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+  100% { transform: translateY(0px); }
+}
+
+.landing-title {
+  font-size: 4rem;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--color-jamaica-green);
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.title-highlight {
+  color: var(--color-jamaica-yellow);
+}
+
+.landing-subtitle {
+  font-family: var(--font-display);
+  color: #ffffff;
+  letter-spacing: 4px;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
+}
+
+.landing-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.btn-enter {
+  background: linear-gradient(135deg, var(--color-jamaica-yellow), #e294b5);
+  color: #000;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.btn-enter:hover {
+  box-shadow: 0 5px 20px rgba(247, 181, 205, 0.3);
+}
+
+.jamaica-stripes {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stripe {
+  flex: 1;
+}
+
+.stripe.green { background-color: #F7B5CD; }
+.stripe.yellow { background-color: #231F20; }
+.stripe.red { background-color: #F7B5CD; }
